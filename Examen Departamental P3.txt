@@ -1,0 +1,25 @@
+const int ldrPin = A0;
+const int ledPin = 3;
+const int umbralOscuro = 100;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int ldrValue = analogRead(ldrPin);
+  
+  Serial.print("Valor LDR: ");
+  Serial.println(ldrValue);
+  
+  if (ldrValue > umbralOscuro) {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("LEDs ENCENDIDOS - Ambiente oscuro");
+  } else {
+    digitalWrite(ledPin, LOW);
+    Serial.println("LEDs APAGADOS - Hay suficiente luz");
+  }
+  
+  delay(500);
+}
